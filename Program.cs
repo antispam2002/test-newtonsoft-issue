@@ -38,7 +38,7 @@ var timer2 = new Timer(state =>
   TimeSpan.FromMilliseconds(1),
   TimeSpan.FromMilliseconds(1));
 // sleep in main thread for a while
-Thread.Sleep(200);
+Thread.Sleep(1000);
 
 public class Payload
 {
