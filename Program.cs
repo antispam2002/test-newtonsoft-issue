@@ -25,7 +25,7 @@ var timer2 = new Timer(state =>
     msg.Append("EventType `null` ->");
     try
     {
-      JsonConvert.DeserializeObject<Payload>(@"{ ""eventType"": null }"); // This does throw.
+      JsonConvert.DeserializeObject<Payload>(@"{ ""eventType"": null }"); // This must throw.
       msg.Append(" must throw, BUT IT DID NOT :/");
     }
     catch (Exception e)
