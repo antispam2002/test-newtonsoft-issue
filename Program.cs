@@ -4,14 +4,15 @@ using Newtonsoft.Json;
 var timer1 = new Timer(state =>
   {
     var msg = new StringBuilder();
-    msg.Append("EventType `empty`: -> should not throw");
+    msg.Append("EventType `empty` -> should not throw");
     try
     {
       JsonConvert.DeserializeObject<Payload>(@"{ ""eventType"": """" }"); // This does not throw.
+      msg.Append(" :)");
     }
     catch (Exception e)
     {
-      msg.Append(e.Message);
+      msg.Append(" BUT IT DID -> ").Append(e.Message);
     }
     Console.WriteLine(msg.ToString());
   },
@@ -21,14 +22,15 @@ var timer1 = new Timer(state =>
 var timer2 = new Timer(state =>
   {
     var msg = new StringBuilder();
-    msg.Append("EventType `null` -> must throw: ");
+    msg.Append("EventType `null` ->");
     try
     {
       JsonConvert.DeserializeObject<Payload>(@"{ ""eventType"": null }"); // This does throw.
+      msg.Append(" must throw, BUT IT DID NOT :/");
     }
     catch (Exception e)
     {
-      msg.Append(e.Message);
+      msg.Append(" threw ").Append(e.Message).Append(" :)");
     }
     Console.WriteLine(msg.ToString());
   },
